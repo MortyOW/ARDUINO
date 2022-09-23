@@ -114,27 +114,6 @@ const int N_C8 = 4186;
 const int N_CS8 = 4435;
 const int N_D8 = 4699;
 const int N_DS8 = 4978;
-
-const int A = 550;
-const int As = 582;
-const int B = 617;
-const int C = 654;
-const int Cs = 693;
-const int D = 734;
-const int Ds = 777;
-const int E = 824;
-const int F = 873;
-const int Fs = 925;
-const int G = 980;
-const int Gs = 1003;
-const int Ax = 1100;
-const int A2s = 1165;
-const int B2 = 1234;
-const int C3 = 1308;
-const int C3s = 1385;
-const int D3 = 1555;
-
-
 const int buzzerPin = 12;
 
 int counter = 0;
@@ -142,8 +121,6 @@ int counter = 0;
 int Undertale[] = {N_D3, N_D3, N_D4, N_A3, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_C3, N_C3, N_D4, N_A3, 0, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_B2, N_B2, N_D4, N_A3, 0, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_AS2, N_AS2, N_D4, N_A3, 0, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_D3, N_D3, N_D4, N_A3, 0, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_C3, N_C3, N_D4, N_A3, 0, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_B2, N_B2, N_D4, N_A3, 0, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_AS2, N_AS2, N_D4, N_A3, 0, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_D4, N_D4, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_C4, N_C4, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_B3, N_B3, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_AS3, N_AS3, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_D4, N_D4, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_C4, N_C4, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_B3, N_B3, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_AS3, N_AS3, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_F4, N_F4, N_F4, N_F4, N_F4, N_D4, N_D4, N_D4, N_F4, N_F4, N_F4, N_G4, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, 0, N_F4, N_F4, N_F4, N_G4, N_GS4, N_A4, N_C5, N_A4, N_D5, N_D5, N_D5, N_A4, N_D5, N_C5, N_F4, N_F4, N_F4, N_F4, N_F4, N_D4, N_D4, N_D4, N_F4, N_F4, N_F4, N_F4, N_D4, N_F4, N_E4, N_D4, N_C4, 0, N_G4, N_E4, N_D4, N_D4, N_D4, N_D4, N_F3, N_G3, N_AS3, N_C4, N_D4, N_F4, N_C5, 0, N_F4, N_D4, N_F4, N_G4, N_GS4, N_G4, N_F4, N_D4, N_GS4, N_G4, N_F4, N_D4, N_F4, N_F4, N_F4, N_GS4, N_A4, N_C5, N_A4, N_GS4, N_G4, N_F4, N_D4, N_E4, N_F4, N_G4, N_A4, N_C5, N_CS5, N_GS4, N_GS4, N_G4, N_F4, N_G4, N_F3, N_G3, N_A3, N_F4, N_E4, N_D4, N_E4, N_F4, N_G4, N_E4, N_A4, N_A4, N_G4, N_F4, N_DS4, N_CS4, N_DS4, 0, N_F4, N_D4, N_F4, N_G4, N_GS4, N_G4, N_F4, N_D4, N_GS4, N_G4, N_F4, N_D4, N_F4, N_F4, N_F4, N_GS4, N_A4, N_C5, N_A4, N_GS4, N_G4, N_F4, N_D4, N_E4, N_F4, N_G4, N_A4, N_C5, N_CS5, N_GS4, N_GS4, N_G4, N_F4, N_G4, N_F3, N_G3, N_A3, N_F4, N_E4, N_D4, N_E4, N_F4, N_G4, N_E4, N_A4, N_A4, N_G4, N_F4, N_DS4, N_CS4, N_DS4, };
 
 int StarWars[] = {a, a, a, f, cH, a, f, cH, a, 0, eH, eH, eH, fH, cH, gS, f, cH, a};
-
-int Potter[] = {B,E,G,F,E,B2,Ax,Fs,E,G,F,Ds,F,B};
 
 void setup()
 {
@@ -177,7 +154,7 @@ void firstSectionUndertale()
     Serial.println(distance_mm);
     delay(185);
 
-    if(distance_mm > 800)
+    if(distance_mm >= 300)
     {
       beep(Undertale[i],100);
     }
@@ -202,7 +179,7 @@ void firstSectionStarWars()
     Serial.println(distance_mm);
     delay(400);
 
-    if(distance_mm>=500 && distance_mm<=799)
+    if(distance_mm < 299)
     {
       beep(StarWars[i],100);
     }
@@ -212,37 +189,12 @@ void firstSectionStarWars()
   }
 }
 
-void firstSectionPotter()
-{
-  for (int i = 0; i < sizeof(Potter) -1; i++)
-  {
-    digitalWrite(TRIGGER_PIN, HIGH);
-    delayMicroseconds(10);
-    digitalWrite(TRIGGER_PIN, LOW);
-
-    long measure = pulseIn(ECHO_PIN, HIGH, MEASURE_TIMEOUT);
-    float distance_mm = measure / 2.0 * SOUND_SPEED;
-    Serial.println(distance_mm);
-    delay(400);
-
-    if(distance_mm>=0 && distance_mm<=499)
-    {
-      beep(Potter[i],100);
-    }
-    else{
-      return;
-    }
-  }
-}
-
-
 
 
 void loop()
 {
   firstSectionUndertale();
   firstSectionStarWars();
-  firstSectionPotter();
 }
 
 
