@@ -177,7 +177,7 @@ void firstSectionUndertale()
     Serial.println(distance_mm);
     delay(185);
 
-    if(distance_mm >= 800)
+    if(distance_mm > 800)
     {
       beep(Undertale[i],100);
     }
@@ -202,7 +202,7 @@ void firstSectionStarWars()
     Serial.println(distance_mm);
     delay(400);
 
-    if(distance_mm < 800)
+    if(distance_mm>=500 && distance_mm<=799)
     {
       beep(StarWars[i],100);
     }
@@ -225,7 +225,7 @@ void firstSectionPotter()
     Serial.println(distance_mm);
     delay(400);
 
-    if(distance_mm>=0 && distance_mm<=799)
+    if(distance_mm>=0 && distance_mm<=499)
     {
       beep(Potter[i],100);
     }
