@@ -31,3 +31,12 @@ PELCAHT Jérémy
 ## Explication du code
 
 L'explication du code se trouve directement sur notre code en commentaire.
+
+## Schéma et Vidéo
+
+Schéma ci-dessous : 
+
+![alt text](/Images/schema.png)
+
+
+Lien vers la vidéo de présentation : 
