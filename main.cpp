@@ -1,11 +1,15 @@
 #include <Arduino.h>
 
-const byte TRIGGER_PIN = 2; // Broche TRIGGER
-const byte ECHO_PIN = 3;    // Broche ECHO
+const byte TRIGGER_PIN = 2; // Broche TRIGGER du  capteur.
+const byte ECHO_PIN = 3;    // Broche ECHO du capteur.
+
+/* Constantes pour le timeout */
 const unsigned long MEASURE_TIMEOUT = 25000UL;
+
+/* Vitesse du son dans l'air en */
 const float SOUND_SPEED = 340.0 / 1000;
 
-
+/* Constantes des notes de Musique (le nombre correspond à la fréquence de la note) */
 const int c = 261;
 const int d = 294;
 const int e = 329;
@@ -118,13 +122,15 @@ const int buzzerPin = 12;
 
 int counter = 0;
 
+/* Dictionnaire correspondant aux musiques (les constantes dedans sont les notes composant les musiques) */
+
 int Undertale[] = {N_D3, N_D3, N_D4, N_A3, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_C3, N_C3, N_D4, N_A3, 0, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_B2, N_B2, N_D4, N_A3, 0, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_AS2, N_AS2, N_D4, N_A3, 0, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_D3, N_D3, N_D4, N_A3, 0, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_C3, N_C3, N_D4, N_A3, 0, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_B2, N_B2, N_D4, N_A3, 0, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_AS2, N_AS2, N_D4, N_A3, 0, N_GS3, N_G3, N_F3, N_D3, N_F3, N_G3, N_D4, N_D4, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_C4, N_C4, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_B3, N_B3, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_AS3, N_AS3, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_D4, N_D4, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_C4, N_C4, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_B3, N_B3, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_AS3, N_AS3, N_D5, N_A4, 0, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, N_F4, N_F4, N_F4, N_F4, N_F4, N_D4, N_D4, N_D4, N_F4, N_F4, N_F4, N_G4, N_GS4, N_G4, N_F4, N_D4, N_F4, N_G4, 0, N_F4, N_F4, N_F4, N_G4, N_GS4, N_A4, N_C5, N_A4, N_D5, N_D5, N_D5, N_A4, N_D5, N_C5, N_F4, N_F4, N_F4, N_F4, N_F4, N_D4, N_D4, N_D4, N_F4, N_F4, N_F4, N_F4, N_D4, N_F4, N_E4, N_D4, N_C4, 0, N_G4, N_E4, N_D4, N_D4, N_D4, N_D4, N_F3, N_G3, N_AS3, N_C4, N_D4, N_F4, N_C5, 0, N_F4, N_D4, N_F4, N_G4, N_GS4, N_G4, N_F4, N_D4, N_GS4, N_G4, N_F4, N_D4, N_F4, N_F4, N_F4, N_GS4, N_A4, N_C5, N_A4, N_GS4, N_G4, N_F4, N_D4, N_E4, N_F4, N_G4, N_A4, N_C5, N_CS5, N_GS4, N_GS4, N_G4, N_F4, N_G4, N_F3, N_G3, N_A3, N_F4, N_E4, N_D4, N_E4, N_F4, N_G4, N_E4, N_A4, N_A4, N_G4, N_F4, N_DS4, N_CS4, N_DS4, 0, N_F4, N_D4, N_F4, N_G4, N_GS4, N_G4, N_F4, N_D4, N_GS4, N_G4, N_F4, N_D4, N_F4, N_F4, N_F4, N_GS4, N_A4, N_C5, N_A4, N_GS4, N_G4, N_F4, N_D4, N_E4, N_F4, N_G4, N_A4, N_C5, N_CS5, N_GS4, N_GS4, N_G4, N_F4, N_G4, N_F3, N_G3, N_A3, N_F4, N_E4, N_D4, N_E4, N_F4, N_G4, N_E4, N_A4, N_A4, N_G4, N_F4, N_DS4, N_CS4, N_DS4, };
 
 int StarWars[] = {a, a, a, f, cH, a, f, cH, a, 0, eH, eH, eH, fH, cH, gS, f, cH, a};
 
 void setup()
 {
- //Setup pin modes
+/* Initialisation des PIN */
   pinMode(buzzerPin, OUTPUT);
   Serial.begin(9600);
   pinMode(TRIGGER_PIN, OUTPUT);
@@ -132,11 +138,15 @@ void setup()
   pinMode(ECHO_PIN, INPUT);
 }
 
+/* Fonction Beep qui permet de jouer la note (une note et sa durée) */
+
 void beep(int note, int duration)
 {
     tone(buzzerPin, note, duration);
 }
 
+
+/* Fonction Undertale qui correspond à notre première musique */
 void firstSectionUndertale()
 {
 
@@ -147,13 +157,13 @@ void firstSectionUndertale()
     delayMicroseconds(10);
     digitalWrite(TRIGGER_PIN, LOW);
 
+    /* Calcul de la distance avant de jouer chaque note. */
     long measure = pulseIn(ECHO_PIN, HIGH, MEASURE_TIMEOUT);
-
-    /* 3. Calcul la distance à partir du temps mesuré */
     float distance_mm = measure / 2.0 * SOUND_SPEED;
     Serial.println(distance_mm);
     delay(185);
 
+    /* Condition : si la distance est supérieure ou égale à 300mm, la musique de undertale continue d'être jouée, sinon elle s'arrête */
     if(distance_mm >= 300)
     {
       beep(Undertale[i],100);
@@ -174,11 +184,13 @@ void firstSectionStarWars()
     delayMicroseconds(10);
     digitalWrite(TRIGGER_PIN, LOW);
 
+    /* Calcul de la distance avant de jouer chaque note. */
     long measure = pulseIn(ECHO_PIN, HIGH, MEASURE_TIMEOUT);
     float distance_mm = measure / 2.0 * SOUND_SPEED;
     Serial.println(distance_mm);
     delay(400);
 
+    /* Condition : si la distance est inférieure à 299mm, la musique de star wars continue d'être jouée, sinon elle s'arrête */
     if(distance_mm < 299)
     {
       beep(StarWars[i],100);
@@ -190,6 +202,7 @@ void firstSectionStarWars()
 }
 
 
+/* Dans notre loop, on met nos deux fonctions qui jouent les musiques à la suite. Si les conditions d'une des musiques sont respectées, alors la musique en question est jouée, dans le cas contraire, l'autre musique est jouée. */
 
 void loop()
 {
