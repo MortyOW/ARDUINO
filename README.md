@@ -1,4 +1,4 @@
-# La Tour Musicale
+# La Voiture Musicale
 
 La tour musicale est un objet qui produit des différentes musiques en fonction de la distance entre elle et l'obstacle qu'elle rencontre.
 
@@ -39,4 +39,4 @@ Schéma ci-dessous :
 ![alt text](/Images/schema.png)
 
 
-Lien vers la vidéo de présentation : 
+Lien vers la vidéo de présentation : https://youtu.be/MwkBJ-iz_HY
